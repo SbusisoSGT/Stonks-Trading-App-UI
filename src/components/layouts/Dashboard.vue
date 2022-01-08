@@ -18,12 +18,12 @@
                     </div>
                     <div class="nav-search-container">
                         <form>
-                            <input type="text" class="nav-search-input" placeholder="Search for Companies, ETF's, Indeces & More" onfocus="dropSearchResults()" onfocusout="hideSearchResults()" v-on:keyup="searchQuery" v-model="search">
+                            <input type="text" class="nav-search-input" placeholder="Search for Companies, ETF's, Indeces & More" v-on:focus="dropSearchResults()" v-on:focusout="hideSearchResults()" v-on:keyup="searchQuery" v-model="search">
                             <button type="submit" class="nav-search-submit"><img src="./../../assets/icons/bx-search.svg" alt="Search"></button>
                         </form>
                         <div class="nav-search-results-container">
                             <div class="nav-search-results"  v-bind:key="result" v-for="result of results">
-                                <a v-bind:href="'/invest/quote/'+ result['1. symbol']">
+                              <router-link v-bind:to="'/invest/' + result['1. symbol']"> 
                                     <div class="nav-search-result">
                                         <div class="nav-search-result-div">
                                             <span class="nav-search-result-symbol">{{result['1. symbol']}}</span>
@@ -31,7 +31,7 @@
                                         </div>
                                         <div class="nav-search-result-region">{{result['3. type'] + ' - ' + result['8. currency']}}</div> 
                                     </div>
-                                </a>
+                                </router-link>
                             </div>
                         </div>
                     </div>
@@ -48,8 +48,7 @@
 </template>
 
 <script>
-    // import { mapState } from 'vuex';
-    let api_key = ''
+    let api_key = '340XQFOXIU81CX6W'
 
     export default {
         name: 'Dashboard',
@@ -131,6 +130,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+          width: 100%;
 }
 
 .side-menu-container .side-menu-icons .side-menu-icon {

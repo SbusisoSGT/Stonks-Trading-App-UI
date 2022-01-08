@@ -22,13 +22,11 @@ export default (to, from, next) => {
                 next('/') 
             });
 
-        }else{
+        }else
             next('/')
-        }
 
-    }else{
+    }else
         next('/')
-    }
         
 }
 

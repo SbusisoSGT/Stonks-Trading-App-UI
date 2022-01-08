@@ -4,6 +4,7 @@ import Home from './components/dashboard/Home'
 import Dashboard from './components/layouts/Dashboard'
 import Login from './components/auth/Login'
 import Register from './components/auth/Register'
+import Invest from './components/dashboard/Invest'
 import auth from './middleware/auth'
 
 Vue.use(VueRouter)
@@ -27,6 +28,11 @@ export default new VueRouter({
                 {
                     path: '/home',
                     component: Home,
+                    beforeEnter: auth,
+                },
+                {
+                    path: '/invest/:quote',
+                    component: Invest,
                     beforeEnter: auth,
                 }
             ]
